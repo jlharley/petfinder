@@ -1,0 +1,66 @@
+//var MYAPP = MYAPP || {};
+
+var Pet = function () {};
+
+var petresult = new Pet();
+
+var btnjson;
+
+/*function sendPetRequest(){
+	$.ajax({
+	  type: "POST",
+	  url: "http://localhost:8080/spring/pet/create",
+	  data: JSON.stringify({ name: "Gerry", age: 20, city: "Sydney" }),
+	  contentType: 'application/json',
+	  success: function(data) {
+		if(data.status == 'OK') alert('Person has been added');
+		else alert('Failed adding person: ' + data.status + ', ' + data.errorMessage);
+	  }
+	});
+}
+*/
+
+function retrievePet(){
+	console.log("retrievePet");
+	$.getJSON("js/spike_pet.json",function(ajaxresult){
+		console.log("retrievePet getJSON");
+		petresult.name = ajaxresult["name"];
+		petresult.age = ajaxresult["age"];
+		petresult.gender = ajaxresult["gender"];
+		console.log("exit retrievePet");
+	});
+}
+
+function displayPet(pet, destination){
+	console.log("displayPet");
+	$("#result").empty();
+	console.log("displayPet empty Pet");
+	$.each(Object.keys(pet), function(i, field){
+		console.log("displayPet each loop: " + field);		
+		if(field == "name"){
+			$("#result").append("<h2>" + pet[field] + "</h2>");
+			$("#viewMore").show();
+		} else {
+			$("#result").append("<p>" + field + ": " + pet[field] + "</p>");
+		}
+	});
+}
+
+window.onload = function() {
+	btnjson = document.getElementById("btnjson");
+	viewMore = document.getElementById("viewMore");
+	
+	
+	
+	
+	
+	btnjson.addEventListener("click", function(){
+		//sendPetRequest();
+		retrievePet();
+		displayPet(petresult, "#kljhkjl");
+	});
+	
+	viewMore.addEventListener("click", function(){
+	});
+}
+
