@@ -9,6 +9,7 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
     var color = [];
     var species = [];
     var breed = [];
+    var petSearch;
         
 	$scope.petName = '';
 	$scope.petAgeMin = '';
@@ -33,7 +34,7 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
     $scope.getPet = function() {
     	$scope.pets.results = [];
     	
-    	$http.post(API_URL, args2).success( function(data) {
+    	$http.post(API_URL, petSearch).success( function(data) {
     		console.log("PetFinderController > getPet() | sending " + JSON.stringify(args2) + " to BackEnd");
     		$scope.pets.results = $.merge(data, $scope.pets.results);
         	$location.path('/search/results');
@@ -53,7 +54,7 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
     });
     
     formatSearchData = function(){
-    	var petSearch = {};
+    	petSearch = {};
     	petSearch.start = START;
     	petSearch.numResults = NUM_RESULTS;
     	petSearch.name = name;
