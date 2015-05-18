@@ -40,12 +40,24 @@
 	<script src="js/search.js"></script>
 	<script src="js/nav.js"></script>
 	<script src="js/results.js"></script>
+	<script src="js/contact.js"></script>
+	<script src="js/mainController.js"></script>
+	<script src="js/searchService.js"></script>
+	
 	
 	
   </head>
 
   <body ng-controller="mainController">
     <div class="container">
+    
+    <!-- User Indicator -->
+    <div id="userIndicator">
+    <h3 class="text-muted">
+    <img id="userPicture" src="http://www.adtechnology.co.uk/images/UGM-default-user.png">
+    {{username}}
+    </h3>
+    </div>
 
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
@@ -62,13 +74,13 @@
       </div>
       
       <!-- Injection -->
-      <div class="mainView" ng-view></div>  
-      <div class="buffer"></div>    
+      <div class="mainView" ng-view></div> 
 
       
 
     </div> <!-- /container -->
-    <!-- Site footer -->
+    <!-- Site footer -->  
+    <div class="buffer"></div> 
 	<footer class="footer">
 		<p>&copy; Nexient U | May, 2015</p>
 	</footer>

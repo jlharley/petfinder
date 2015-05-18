@@ -1,6 +1,6 @@
-var petFinderApp = angular.module('petFinderApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
+angular.module('petFinderApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap'])
 //configure our routes
-petFinderApp.config(function($routeProvider) {
+.config(function($routeProvider) {
 	$routeProvider
 		// route for the home page
 		.when('/', {
@@ -31,16 +31,6 @@ petFinderApp.config(function($routeProvider) {
 		// route for the contact page
 		.when('/contact', {
 		    templateUrl : 'pages/contact.html',
-		    controller  : 'mainController'
+		    controller  : 'contactController'
 		});
-});
-
-petFinderApp.service("search", function Search() {
-	var search = this;
-	search.results = [];
-});
-
-//create the controller and inject Angular's $scope
-petFinderApp.controller('mainController', function($scope, $http) {
-	
 });

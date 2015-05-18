@@ -2,10 +2,25 @@ body {
   padding-top: 20px;
 }
 
-.col-lg-4 {
+#userIndicator {
+	position: absolute;
+	right: 30px;
+	top: 0px;
+}
+
+#userPicture {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	box-shadow: 0px 0px 5px #888888;
+}
+
+.tile {
 	border-radius: 5px;
 	box-shadow: 0px 0px 5px #888888;
 }
+
+
 
 .footer {
   padding-top: 40px;
@@ -19,12 +34,7 @@ body {
 }
 
 .buffer {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-top: 40px;
-  border-top: 1px solid #eee;
-  background-color: white;
-  width: 100vw;
+  height: 120px;
 }
 
 /* Main marketing message and sign up button */
