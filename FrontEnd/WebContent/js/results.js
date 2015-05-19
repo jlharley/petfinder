@@ -7,22 +7,24 @@ angular.module('petFinderApp').controller('resultController', function($scope, $
 	$scope.numPages = $scope.pets.results.length / $scope.numPerPage;
 	
 	$scope.$watchCollection('[pets.results, currentPage]', function() {
-		console.log("Change detected!  |  pets.results");
 		var begin = (($scope.currentPage - 1) * $scope.numPerPage);
 		var end = begin + $scope.numPerPage;
 		
-		console.log("Results: " + JSON.stringify($scope.pets.results));
 		$scope.filteredPets = $scope.pets.results.slice(begin, end);
 
-		
-		if($scope.pets.results.length == 0){
+		/* Return to the search page if there are no results to display */
+		/*if($scope.pets.results.length == 0){
 	    	$location.path('/search');
-		} else {
-			console.log("Total: " + $scope.pets.results.length);
-		}
+		} */
 	});
 	
-	$scope.$watchCollection('[pets.name, pets.color, pets.species, pets.breed, pets.minAge, pets.maxAge]', function() {
-    	console.log("Pets Changed");
-    });
+	$scope.dislikePet = function(petID){		
+		$http.post("http://localhost:8080/spring/pet/dummy", petID).success( function(data) {
+    	});
+	}
+	
+	$scope.likePet = function(){
+		$http.post("http://localhost:8080/spring/pet/dummy", petID).success( function(data) {
+    	});
+	}
 });

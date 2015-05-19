@@ -1,8 +1,9 @@
-angular.module('petFinderApp').service("searchService", function SearchService() {
+angular.module('petFinderApp').service("searchService", function SearchService($http, $location) {
 	var searchService = this;
 	searchService.args;
-	searchService.results = [];
-	
+	searchService.results = [];	
+
+    var API_URL = "http://localhost:8080/spring/pet/dummy";
 	var START = 0;
     var NUM_RESULTS = 10;
     var name = "";
@@ -18,6 +19,11 @@ angular.module('petFinderApp').service("searchService", function SearchService()
     searchService.petColor = '';
     searchService.petSpecies = '';
     searchService.petBreed = '';
+    
+    searchService.search = function() {
+    	searchService.formatSearchData();
+    	searchService.getPet();
+    };
 	
 	searchService.formatSearchData = function(){
     	searchService.args = {};
@@ -29,6 +35,14 @@ angular.module('petFinderApp').service("searchService", function SearchService()
     	searchService.args.color = color;
     	searchService.args.species = species;
     	searchService.args.breed = breed;
-    	console.log("ARGS = " + JSON.stringify(searchService.args));
+    };
+    
+    searchService.getPet = function() {
+    	searchService.results = [];
+    	
+    	$http.post(API_URL, searchService.args).success( function(data) {
+    		searchService.results = $.merge(data, searchService.results);
+        	$location.path('/search/results');
+    	});
     };
 });
