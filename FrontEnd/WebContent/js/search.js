@@ -9,7 +9,6 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
     var color = [];
     var species = [];
     var breed = [];
-    var petSearch;
         
 	$scope.petName = '';
 	$scope.petAgeMin = '';
@@ -34,7 +33,7 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
     $scope.getPet = function() {
     	$scope.pets.results = [];
     	
-    	$http.post(API_URL, petSearch).success( function(data) {
+    	$http.post(API_URL, $scope.pets.args).success( function(data) {
     		console.log("PetFinderController > getPet() | sending " + JSON.stringify(args2) + " to BackEnd");
     		$scope.pets.results = $.merge(data, $scope.pets.results);
         	$location.path('/search/results');
@@ -54,15 +53,15 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
     });
     
     formatSearchData = function(){
-    	petSearch = {};
-    	petSearch.start = START;
-    	petSearch.numResults = NUM_RESULTS;
-    	petSearch.name = name;
-    	petSearch.minAge = minAge;
-    	petSearch.maxAge = maxAge;
-    	petSearch.color = color;
-    	petSearch.species = species;
-    	petSearch.breed = breed;
-    	console.log("ARGS = " + JSON.stringify(petSearch));
+    	$scope.pets.args = {};
+    	$scope.pets.args.start = START;
+    	$scope.pets.args.numResults = NUM_RESULTS;
+    	$scope.pets.args.name = name;
+    	$scope.pets.args.minAge = minAge;
+    	$scope.pets.args.maxAge = maxAge;
+    	$scope.pets.args.color = color;
+    	$scope.pets.args.species = species;
+    	$scope.pets.args.breed = breed;
+    	console.log("ARGS = " + JSON.stringify($scope.pets.args));
     };
 });
