@@ -8,12 +8,12 @@
 	<div class="row">
 	<form class="col-lg-12 tile" ng-submit="search()">
 		<h2>Filters</h2>
-		<input class="col-lg-3" type="text" ng-model="petName"  size="30" placeholder="name">
-		<input class="col-lg-3" type="text" ng-model="petColor"  size="30" placeholder="color">
-		<input class="col-lg-3" type="text" ng-model="petSpecies"  size="30" placeholder="species">
-		<input class="col-lg-3" type="text" ng-model="petBreed"  size="30" placeholder="breed">
-		<p class="col-lg-6">Minimum Age: {{petAgeMin}}<input type="range" ng-model="petAgeMin"  size="30" min="0" max="20" step="1" value=0></p>
-		<p class="col-lg-6">Maximum Age: {{petAgeMax}}<input type="range" ng-model="petAgeMax"  size="30" min=0 max="20" step="1" value=20></p>
+		<input class="col-lg-3" type="text" ng-model="pets.name"  size="30" placeholder="name">
+		<input class="col-lg-3" type="text" ng-model="pets.color"  size="30" placeholder="color">
+		<input class="col-lg-3" type="text" ng-model="pets.species"  size="30" placeholder="species">
+		<input class="col-lg-3" type="text" ng-model="pets.breed"  size="30" placeholder="breed">
+		<p class="col-lg-6">Minimum Age: {{petAgeMin}}<input type="range" ng-model="pets.minAge"  size="30" min="0" max="20" step="1" value=0></p>
+		<p class="col-lg-6">Maximum Age: {{petAgeMax}}<input type="range" ng-model="pets.maxAge"  size="30" min=0 max="20" step="1" value=20></p>
 		<p><input class="btn btn-primary" type="submit" value="Find Pet"></p>
 	</form>
 	</div>
