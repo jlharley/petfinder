@@ -21,4 +21,8 @@ angular.module('petFinderApp').controller('resultController', function($scope, $
 			console.log("Total: " + $scope.pets.results.length);
 		}
 	});
+	
+	$scope.$watchCollection('[pets.name, pets.color, pets.species, pets.breed, pets.minAge, pets.maxAge]', function() {
+    	console.log("Pets Changed");
+    });
 });
