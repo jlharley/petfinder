@@ -2,6 +2,10 @@ body {
   padding-top: 20px;
 }
 
+.mainView {
+	margin-top: 20px;
+}
+
 .dislikeButton {
   	background-color: #E00000;
   	width: 50%;

@@ -14,13 +14,13 @@
 <!-- Example row of columns -->
 <h4>{{pets.results.length}} total</h4>
 <div class="row" id="result">
-	<div class="col-lg-4 tile" ng-repeat="pet in pets.results">
+	<div class="col-lg-12 tile" ng-repeat="pet in pets.results" ng-if="$index == 0">
 		<h2>Pet # {{pet.id}}</h2>
 		<p>Name:  {{pet.name}}</p>
 		<p>Age:  {{pet.age}}</p>
 		<p>Color:  {{pet.color}}</p>
 		<p>Species:  {{pet.species}}</p>
 		<p>Breed:  {{pet.breed}}</p>
-		<p><a class="btn btn-primary dislikeButton" ng-click="dislikePet(pet)" role="button" id="dislikePet"> &laquo; Dislike</a><a class="btn btn-primary likeButton" role="button" id="likePet" disabled>Like &raquo;</a></p>
+		<p><a class="btn btn-primary dislikeButton" ng-click="dislikePet(pet)" role="button" id="dislikePet"> &laquo; Dislike</a><a class="btn btn-primary likeButton" ng-click="likePet(pet)" role="button" id="likePet">Like &raquo;</a></p>
 	</div>
 </div>

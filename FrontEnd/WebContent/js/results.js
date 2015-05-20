@@ -18,11 +18,22 @@ angular.module('petFinderApp').controller('resultController', function($scope, $
 		} */
 	});
 	
+	$scope.$watchCollection('[pets.results.length]', function() {
+    	console.log("Change in length:\n\tlength = " + $scope.pets.results.length + "\n\tnumResults = " + $scope.pets.numResults);
+		if ($scope.pets.results.length == 0 && $scope.pets.numResults > 0){
+			$scope.pets.search();	
+		}
+	});
+	
 	$scope.dislikePet = function(pet){
 		var index = $scope.pets.results.indexOf(pet);
 		$scope.pets.results.splice(index, 1);
+		$scope.pets.numResults --;
 	}
 	
 	$scope.likePet = function(pet){
+		var index = $scope.pets.results.indexOf(pet);
+		$scope.pets.results.splice(index, 1);
+		$scope.pets.numResults --;
 	}
 });

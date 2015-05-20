@@ -23,6 +23,8 @@ angular.module('petFinderApp').service("searchService", function SearchService($
     searchService.search = function() {
     	searchService.formatSearchData();
     	searchService.getPet();
+    	console.log("Setting numResults");
+    	searchService.numResults = 30;
     };
 	
 	searchService.formatSearchData = function(){
