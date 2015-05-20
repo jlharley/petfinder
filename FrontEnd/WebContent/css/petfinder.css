@@ -2,6 +2,20 @@ body {
   padding-top: 20px;
 }
 
+.dislikeButton {
+  	background-color: #E00000;
+  	width: 50%;
+}
+
+.dislikeButton:hover {
+  	background-color: #A00000;
+  	width: 50%;
+}
+
+.likeButton {
+  	width: 50%;
+}
+
 #userIndicator {
 	position: absolute;
 	right: 30px;

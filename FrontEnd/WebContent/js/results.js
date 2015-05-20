@@ -19,14 +19,10 @@ angular.module('petFinderApp').controller('resultController', function($scope, $
 	});
 	
 	$scope.dislikePet = function(pet){
-		$http.post("http://localhost:8080/spring/pet/dummy", pet).success( function(data) {
-    	});
 		var index = $scope.pets.results.indexOf(pet);
 		$scope.pets.results.splice(index, 1);
 	}
 	
 	$scope.likePet = function(pet){
-		$http.post("http://localhost:8080/spring/pet/dummy", pet).success( function(data) {
-    	});
 	}
 });
