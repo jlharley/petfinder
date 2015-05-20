@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="org.petfinder.spring">
+	<logger name="com.petfinder.backend">
 		<level value="info" />
 	</logger>
 	
