@@ -21,13 +21,29 @@ body {
   	width: 50%;
 }
 
-#userIndicator {
-	position: absolute;
-	right: 30px;
-	top: 0px;
+.masthead {
+	text-align: justify;
 }
 
-#userPicture {
+.masthead > h3{
+	display: inline-block;
+}
+
+.masthead:after{
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    font-size:0;
+    line-height:0;
+}
+
+.userIndicator {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.userPicture {
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;

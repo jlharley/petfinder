@@ -50,19 +50,18 @@
 
   <body ng-controller="mainController">
     <div class="container">
-    
-    <!-- User Indicator -->
-    <div id="userIndicator">
-    <h3 class="text-muted">
-    <img id="userPicture" src="http://www.adtechnology.co.uk/images/UGM-default-user.png">
-    {{username}}
-    </h3>
-    </div>
-
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
         <h3 class="text-muted">Pet Rescue</h3>
+        <!-- User Indicator -->
+        <div class="userIndicator">
+	    <h3 class="text-muted">
+	    <img class="userPicture" src="http://www.adtechnology.co.uk/images/UGM-default-user.png">
+	    {{username}}
+	    </h3>
+	    </div>
+      </div>
         <nav ng-controller="navController as nav">
           <ul class="nav nav-justified">
             <li ng-class="{ 'active' : isActive('/') }"><a href="#">Home</a></li>
@@ -71,7 +70,6 @@
             <li ng-class="{ 'active' : isActive('/contact') }"><a href="#contact">Contact</a></li>
           </ul>
         </nav>
-      </div>
       
       <!-- Injection -->
       <div class="mainView" ng-view></div>
