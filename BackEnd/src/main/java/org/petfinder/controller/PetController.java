@@ -1,7 +1,9 @@
 package org.petfinder.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.petfinder.model.Pet;
@@ -37,17 +39,17 @@ public class PetController {
 		return "home";
 	}
 	
-	@RequestMapping(value="/getPet", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
-	public Pet getPet() {
-		logger.info("getPet");
-		
-		Pet dog1 = new Pet();
-		
-		// Make API call
-		//PetFinderConsumer pfc = new PetFinderConsumer();
-		//PetFinderPetRecord pfr = pfc.findPet(animal, breed, size, sex, location, age, offset, count, output, format);
-		
-		return dog1;
+	@RequestMapping(value="/getPet", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<Pet> getPet() {
+		logger.info("Start getDummyPet");
+		List<Pet> pets = new ArrayList<Pet>();
+		for (int i = 0; i < 100; i++){
+			Pet pet = new Pet();
+			pet.setName("pet"+i);
+			pet.setAge(i);
+			pets.add(pet);
+		}
+		return pets;
 	}
 	
 }
