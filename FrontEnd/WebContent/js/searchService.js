@@ -3,7 +3,7 @@ angular.module('petFinderApp').service("searchService", function SearchService($
 	searchService.args;
 	searchService.results = [];	
 
-    var API_URL = "http://localhost:8080/spring/pet/dummy";
+    var API_URL = "http://localhost:8080/backend/getPet";
 	var START = 0;
     var NUM_RESULTS = 10;
     var name = "";
