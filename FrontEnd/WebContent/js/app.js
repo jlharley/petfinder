@@ -37,9 +37,9 @@ angular.module('petFinderApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngMockE
 angular.module('petFinderApp').run(function($httpBackend) {
     // define responses for requests here as usual
 	$httpBackend.whenGET(/(pages)\//).passThrough();
-	$httpBackend.whenPOST().respond(function(method,url,data){
+	$httpBackend.whenPOST('http://localhost:8080/backend/getPet').respond(function(method,url,data){
 		console.log('Received these data:', method, url, data);
-		return [200, [{name:"Blue", age:"5", color:"blue", species:"dog"},{name:"Doc", age:"5", color:"white", species:"dog"}], {}]
+		return [200, [{name:"Blue", age:"6", color:"blue", species:"dog"},{name:"Doc", age:"5", color:"white", species:"dog"}], {}]
 	});
 	
 });
