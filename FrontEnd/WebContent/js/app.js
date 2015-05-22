@@ -39,7 +39,10 @@ angular.module('petFinderApp').run(function($httpBackend) {
 	$httpBackend.whenGET(/(pages)\//).passThrough();
 	$httpBackend.whenPOST('http://localhost:8080/backend/getPet').respond(function(method,url,data){
 		console.log('Received these data:', method, url, data);
-		return [200, [{name:"Blue", age:"6", color:"blue", species:"dog"},{name:"Doc", age:"5", color:"white", species:"dog"}], {}]
+		return [200, [{name:"Blue", age:"6", color:"blue", species:"dog"},{name:"Doc", age:"5", color:"white", species:"dog"}], {}];
 	});
-	
+	$httpBackend.whenPOST('http://localhost:8080/backend/login').respond(function(method,url,data){
+		console.log('Received these data:', method, url, data);
+		return [200, {username:"uname"}, {}];
+	});
 });
