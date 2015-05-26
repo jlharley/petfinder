@@ -21,6 +21,11 @@ body {
   	width: 50%;
 }
 
+.active {
+	color:#286090;
+	font-weight:bold;
+}
+
 .masthead {
 	text-align: justify;
 }

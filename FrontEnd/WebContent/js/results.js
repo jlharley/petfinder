@@ -5,6 +5,14 @@ angular.module('petFinderApp').controller('resultController', function($scope, $
 	$scope.numPerPage = 10;
 	$scope.maxSize = 5;
 	$scope.numPages = $scope.pets.results.length / $scope.numPerPage;
+	$scope.availableLimits = [1, 5, 10];
+	$scope.limit = 1;
+	$scope.setLimit = function (amount) {
+		$scope.limit = amount;
+	};
+	$scope.isActiveLimit = function (amount) {
+		return amount === $scope.limit;
+	};
 	
 	$scope.$watchCollection('[pets.results, currentPage]', function() {
 		var begin = (($scope.currentPage - 1) * $scope.numPerPage);
