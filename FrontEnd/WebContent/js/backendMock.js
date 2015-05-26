@@ -53,7 +53,7 @@ angular.module('petFinderApp').run(function($httpBackend) {
 	});
 	$httpBackend.whenPOST('http://localhost:8080/backend/login').respond(function(method,url,data){
 		console.log('Received these data at FAKE backend:', method, url, data);
-		return [200, {username:"uname"}, {}];
+		return [200, {username:"uname", firstname:"Tyrion", lastname:"Lannister"}, {}];
 	});
 });
 })(angular)
