@@ -1,6 +1,7 @@
-angular.module('petFinderApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngMockE2E'])
+angular.module('petFinderApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
+
 //configure our routes
-.config(function($routeProvider) {
+angular.module('petFinderApp').config(function($routeProvider) {
 	$routeProvider
 		// route for the home page
 		.when('/', {
