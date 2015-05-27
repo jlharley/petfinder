@@ -1,12 +1,11 @@
 angular.module('petFinderApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 
 //configure our routes
-angular.module('petFinderApp').config(function($routeProvider, User) {
+angular.module('petFinderApp').config(function($routeProvider) {
 	$routeProvider
 		// route for the home page
 		.when('/', {
-		    templateUrl : 'pages/home.html',
-		    controller  : 'mainController'
+		    templateUrl : 'pages/home.html'
 		})
 		
 		// route for the search page
@@ -25,8 +24,7 @@ angular.module('petFinderApp').config(function($routeProvider, User) {
 		
 		// route for the about page
 		.when('/about', {
-		    templateUrl : 'pages/about.html',
-		    controller  : 'mainController'
+		    templateUrl : 'pages/about.html'
 		})
 		
 		// route for the contact page
