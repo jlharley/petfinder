@@ -1,5 +1,4 @@
 angular.module('petFinderApp').service('User', function(){
-	return function() {
         this.username = "";
         this.firstName = "";
         this.lastName = "";
@@ -32,5 +31,4 @@ angular.module('petFinderApp').service('User', function(){
         this.setNickname = function(name) {
             this.nickname = name;
         };
-    };
 });
