@@ -1,4 +1,4 @@
-angular.module('petFinderApp').factory('User', function(){
+angular.module('petFinderApp').service('User', function(){
 	return function() {
         this.username = "";
         this.firstName = "";
