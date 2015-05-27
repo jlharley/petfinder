@@ -1,3 +1,3 @@
 angular.module('petFinderApp').controller('mainController', function($scope, $http) {
-	$scope.username = "username";
+	$scope.username = localStorage.username;
 });
