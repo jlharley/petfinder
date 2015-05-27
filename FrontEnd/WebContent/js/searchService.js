@@ -31,10 +31,10 @@ angular.module('petFinderApp').service("searchService", function SearchService($
 		searchService.args = {};
     	searchService.args.animal = "dog";
     	searchService.args.breed = "";
-    	searchService.args.size = "";
-    	searchService.args.sex = "";
-    	searchService.args.location = "";
-    	searchService.args.age = "";
+    	searchService.args.size = "M";
+    	searchService.args.sex = "M";
+    	searchService.args.location = "48108";
+    	searchService.args.age = "Baby";
     	searchService.args.offset = START;
     	searchService.args.count = NUM_RESULTS;
     	searchService.args.output = "full";
