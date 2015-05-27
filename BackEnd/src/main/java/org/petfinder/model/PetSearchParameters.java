@@ -72,5 +72,8 @@ public class PetSearchParameters {
 	}
 	public void setFormat(String format) {
 		this.format = format;
-	}	
+	}
+	public String toString() {
+		return animal + ", " + breed + ", " + size + ", " + sex + ", " + location + ", " + age + ", " + offset + ", " + count + ", " + output + ", " + format;
+	}
 }
