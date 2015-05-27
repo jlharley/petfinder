@@ -1,6 +1,6 @@
 angular.module('petFinderApp').factory('User', function(){
-	return function(username) {
-        this.username = username;
+	return function() {
+        this.username = "";
         this.firstName = "";
         this.lastName = "";
         this.nickname = "";
@@ -19,6 +19,18 @@ angular.module('petFinderApp').factory('User', function(){
         };
         this.getFullName = function() {
             return this.firstName + " " + this.lastName;
+        };
+        this.setUsername = function(name) {
+            this.username = name;
+        };
+        this.setFirstName = function(name) {
+            this.firstName = name;
+        };
+        this.setLastName = function(name) {
+            this.lastName = name;
+        };
+        this.setNickname = function(name) {
+            this.nickname = name;
         };
     };
 });

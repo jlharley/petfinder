@@ -1,4 +1,4 @@
-angular.module('petFinderApp').controller('PetFinderController', function($scope, $http, searchService, $location) {
+angular.module('petFinderApp').controller('PetFinderController', function($scope, $http, searchService, $location, User) {
     $scope.pets = searchService;
      
     
