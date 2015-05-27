@@ -1,3 +1,5 @@
 angular.module('petFinderApp').controller('mainController', function($scope, $http, User) {
-	$scope.username = User.getUsername();
+	User.setFirstName("Tyrion");
+	User.setLastName("Lannister");
+	$scope.username = User.getFullName();
 });
