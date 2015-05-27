@@ -1,6 +1,7 @@
 package org.petfinder.model;
 
-public class Pet {
+public class PetSearchParameters {
+
 	private String animal;
 	private String breed;
 	private String size;
