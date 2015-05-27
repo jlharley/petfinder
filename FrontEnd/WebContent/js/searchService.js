@@ -28,15 +28,17 @@ angular.module('petFinderApp').service("searchService", function SearchService($
     };
 	
 	searchService.formatSearchData = function(){
-    	searchService.args = {};
-    	searchService.args.start = START;
-    	searchService.args.numResults = NUM_RESULTS;
-    	searchService.args.name = name;
-    	searchService.args.minAge = minAge;
-    	searchService.args.maxAge = maxAge;
-    	searchService.args.color = color;
-    	searchService.args.species = species;
-    	searchService.args.breed = breed;
+		searchService.args = {};
+    	searchService.args.animal = "dog";
+    	searchService.args.breed = "";
+    	searchService.args.size = "";
+    	searchService.args.sex = "";
+    	searchService.args.location = "";
+    	searchService.args.age = "";
+    	searchService.args.offset = START;
+    	searchService.args.count = NUM_RESULTS;
+    	searchService.args.output = "full";
+    	console.log("ARGS: " + searchService.args);
     };
     
     searchService.getPet = function() {
