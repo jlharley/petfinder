@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Thu May 28 2015 10:54:30 GMT-0400 (Eastern Daylight Time)
+// Generated on Thu May 28 2015 11:49:16 GMT-0400 (Eastern Daylight Time)
 
 module.exports = function(config) {
   config.set({
@@ -15,6 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'js/dependencies/angular.min.js',
+      'js/dependencies/angular-mocks.js',
+      'js/dependencies/*.js',
       'js/*.js',
       'js/tests/*.js'
     ],
