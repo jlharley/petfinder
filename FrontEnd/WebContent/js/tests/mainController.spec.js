@@ -1,4 +1,4 @@
-describe('Test Example', function() {
+describe('Main Controller', function() {
 	beforeEach(module('petFinderApp'));
 	
 	var mainController,	scope;

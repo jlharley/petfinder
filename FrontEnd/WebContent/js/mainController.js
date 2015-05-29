@@ -1,4 +1,3 @@
-angular.module('petFinderApp').controller('mainController', function($scope, $http) {
+angular.module('petFinderApp').controller('mainController', function($scope, $http, user) {
 	$scope.greeting = 'Hello World!';
-	$scope.username = localStorage.username;
 });
