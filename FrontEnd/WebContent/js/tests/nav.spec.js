@@ -4,6 +4,7 @@ describe('Nav Controller', function() {
 	
 	beforeEach(inject(function ($rootScope, $controller, $location) {
 		scope = $rootScope.$new();
+		spyOn($location, 'path').andReturn('Fake location');
 		mainController = $controller('navController', {
 			$scope: scope
 		});
