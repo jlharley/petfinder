@@ -1,4 +1,4 @@
-angular.module('petFinderApp').controller('resultController', function($scope, $http, searchService, $location) {
+angular.module('petFinderApp').controller('resultController', function($scope, searchService) {
 	$scope.pets = searchService;
 	$scope.filteredPets = [];
 	$scope.currentPage = 1;
