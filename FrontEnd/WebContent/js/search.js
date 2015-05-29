@@ -1,3 +1,3 @@
-angular.module('petFinderApp').controller('PetFinderController', function($scope, $http, searchService, $location, user) {
+angular.module('petFinderApp').controller('PetFinderController', function($scope, searchService) {
     $scope.pets = searchService;
 });
