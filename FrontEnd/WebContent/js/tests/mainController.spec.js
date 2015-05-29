@@ -1,5 +1,5 @@
+beforeEach(module('petFinderApp'));
 describe('Main Controller', function() {
-	beforeEach(module('petFinderApp'));
 	
 	var mainController,	scope;
 	
