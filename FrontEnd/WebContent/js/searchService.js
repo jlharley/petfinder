@@ -1,24 +1,18 @@
 angular.module('petFinderApp').service("searchService", function SearchService($http, $location) {
 	var searchService = this;
 	searchService.args;
-	searchService.results = [];	
+	searchService.results;	
 
     var API_URL = "http://localhost:8080/backend/getPet";
 	var START = 0;
     var NUM_RESULTS = 10;
-    var name = "";
-    var minAge = 0;
-    var maxAge = 10;
-    var color = [];
-    var species = [];
-    var breed = [];
         
-    searchService.petName = '';
+    /*searchService.petName = '';
     searchService.petAgeMin = '';
     searchService.petAgeMax = '';
     searchService.petColor = '';
     searchService.petSpecies = '';
-    searchService.petBreed = '';
+    searchService.petBreed = '';*/
     
     searchService.search = function() {
     	searchService.formatSearchData();
