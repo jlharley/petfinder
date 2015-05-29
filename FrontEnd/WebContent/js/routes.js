@@ -15,9 +15,7 @@ angular.module('petFinderApp').config(function($routeProvider) {
 		
 		// route for the results page
 		.when('/search/results', {
-		    templateUrl : function(){
-		    		return 'pages/results.html';
-		    },
+		    templateUrl : 'pages/results.html',
 		    controller  : 'resultController'
 		})
 		
