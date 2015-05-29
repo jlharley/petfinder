@@ -1,7 +1,8 @@
 angular.module('petFinderApp').service("searchService", function SearchService($http, $location) {
 	var searchService = this;
 	searchService.args;
-	searchService.results = [];	
+	searchService.results = [];
+	searchService.numResults = 30;
 
     var API_URL = "http://localhost:8080/backend/getPet";
 	var START = 0;
@@ -18,7 +19,6 @@ angular.module('petFinderApp').service("searchService", function SearchService($
     	searchService.formatSearchData();
     	searchService.getPet();
     	console.log("Setting numResults");
-    	searchService.numResults = 30;
     };
 	
 	searchService.formatSearchData = function(){
