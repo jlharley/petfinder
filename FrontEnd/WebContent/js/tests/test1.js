@@ -1,8 +1,7 @@
 describe('Test Example', function() {
 	beforeEach(module('petFinderApp'));
 	
-	var mainController,
-	scope;
+	var mainController,	scope;
 	
 	beforeEach(inject(function ($rootScope, $controller) {
 		scope = $rootScope.$new();
@@ -11,6 +10,6 @@ describe('Test Example', function() {
 		});
 	}));
 	it('says hello world!', function () {
-		expect(scope.greeting).toEqual("Hello world!");
+		expect(scope.greeting).toEqual("Hello World!");
 	});
 });

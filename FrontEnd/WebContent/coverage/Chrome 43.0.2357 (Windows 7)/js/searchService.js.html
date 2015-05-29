@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for ./js/searchService.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">./js/searchService.js</span></h1>
+    <h2>
+        Statements: <span class="metric">2.44% <small>(1 / 41)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">2.44% <small>(1 / 41)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">./js/</a> &#187; searchService.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">angular.module('petFinderApp').service("searchService", <span class="fstat-no" title="function not covered" >function SearchService($http, $location) {</span>
+<span class="cstat-no" title="statement not covered" >	var searchService = this;</span>
+<span class="cstat-no" title="statement not covered" >	searchService.args;</span>
+<span class="cstat-no" title="statement not covered" >	searchService.results = [];	</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var API_URL = "http://localhost:8080/backend/getPet";</span>
+<span class="cstat-no" title="statement not covered" >	var START = 0;</span>
+<span class="cstat-no" title="statement not covered" >    var NUM_RESULTS = 10;</span>
+<span class="cstat-no" title="statement not covered" >    var name = "";</span>
+<span class="cstat-no" title="statement not covered" >    var minAge = 0;</span>
+<span class="cstat-no" title="statement not covered" >    var maxAge = 10;</span>
+<span class="cstat-no" title="statement not covered" >    var color = [];</span>
+<span class="cstat-no" title="statement not covered" >    var species = [];</span>
+<span class="cstat-no" title="statement not covered" >    var breed = [];</span>
+        
+<span class="cstat-no" title="statement not covered" >    searchService.petName = '';</span>
+<span class="cstat-no" title="statement not covered" >    searchService.petAgeMin = '';</span>
+<span class="cstat-no" title="statement not covered" >    searchService.petAgeMax = '';</span>
+<span class="cstat-no" title="statement not covered" >    searchService.petColor = '';</span>
+<span class="cstat-no" title="statement not covered" >    searchService.petSpecies = '';</span>
+<span class="cstat-no" title="statement not covered" >    searchService.petBreed = '';</span>
+    
+<span class="cstat-no" title="statement not covered" >    searchService.search = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    	searchService.formatSearchData();</span>
+<span class="cstat-no" title="statement not covered" >    	searchService.getPet();</span>
+<span class="cstat-no" title="statement not covered" >    	console.log("Setting numResults");</span>
+<span class="cstat-no" title="statement not covered" >    	searchService.numResults = 30;</span>
+    };
+	
+<span class="cstat-no" title="statement not covered" >	searchService.formatSearchData = <span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >		searchService.args = {};</span>
+<span class="cstat-no" title="statement not covered" >    	searchService.args.animal = "dog";</span>
+<span class="cstat-no" title="statement not covered" >    	searchService.args.breed = "";</span>
+<span class="cstat-no" title="statement not covered" >    	searchService.args.size = "M";</span>
+<span class="cstat-no" title="statement not covered" >    	searchService.args.sex = "M";</span>
+<span class="cstat-no" title="statement not covered" >    	searchService.args.location = "48108";</span>
+<span class="cstat-no" title="statement not covered" >    	searchService.args.age = "Baby";</span>
+<span class="cstat-no" title="statement not covered" >    	searchService.args.offset = START;</span>
+<span class="cstat-no" title="statement not covered" >    	searchService.args.count = NUM_RESULTS;</span>
+<span class="cstat-no" title="statement not covered" >    	searchService.args.output = "full";</span>
+<span class="cstat-no" title="statement not covered" >    	console.log("ARGS: " + searchService.args);</span>
+    };
+    
+<span class="cstat-no" title="statement not covered" >    searchService.getPet = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    	searchService.results = [];</span>
+    	
+<span class="cstat-no" title="statement not covered" >    	$http.post(API_URL, searchService.args).success( <span class="fstat-no" title="function not covered" >function(data) {</span></span>
+<span class="cstat-no" title="statement not covered" >    		searchService.results = $.merge(data, searchService.results);</span>
+<span class="cstat-no" title="statement not covered" >        	$location.path('/search/results');</span>
+    	});
+    };
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri May 29 2015 09:06:20 GMT-0400 (Eastern Daylight Time)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
