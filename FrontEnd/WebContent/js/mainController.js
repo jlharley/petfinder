@@ -1,3 +1,3 @@
 angular.module('petFinderApp').controller('mainController', function($scope, user) {
-	$scope.greeting = 'Hello World!';
+	$scope.user = user;
 });
