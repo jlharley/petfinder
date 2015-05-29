@@ -6,4 +6,6 @@ describe('Search Service', function(){
 		httpBackend = $httpBackend;
 		location = $location;
 	}));
+	xdescribe('search() function', function(){
+	});
 });
