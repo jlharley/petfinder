@@ -30,6 +30,7 @@ angular.module('petFinderApp').service("searchService", function SearchService($
     
     searchService.getPet = function(args) {
     	$http.post("http://localhost:8080/backend/getPet", args).success( function(data) {
+    		console.log("getPet")
     		searchService.results = data;
         	$location.path('/search/results');
     	});
