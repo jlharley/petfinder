@@ -6,6 +6,12 @@ describe('Search Service', function(){
 		httpBackend = $httpBackend;
 		location = $location;
 	}));
-	xdescribe('search() function', function(){
+	describe('formatSearchData function', function(){
+		it('should create formatted variable', function(){
+			
+		});
+		it('should create formatted variable', function(){
+			
+		});
 	});
 });

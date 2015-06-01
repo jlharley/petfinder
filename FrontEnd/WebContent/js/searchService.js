@@ -13,11 +13,6 @@ angular.module('petFinderApp').service("searchService", function SearchService($
     searchService.petColor = '';
     searchService.petSpecies = '';
     searchService.petBreed = '';*/
-    
-    searchService.search = function() {
-    	searchService.args = searchService.formatSearchData();
-    	searchService.getPet(searchService.args);
-    };
 	
 	searchService.formatSearchData = function(){
 		var formatted = {};
@@ -30,7 +25,7 @@ angular.module('petFinderApp').service("searchService", function SearchService($
 		formatted.offset = START;
 		formatted.count = NUM_RESULTS;
 		formatted.output = "full";
-    	return JSON.parse(JSON.stringify(formatted));
+    	return formatted;
     };
     
     searchService.getPet = function(args) {
