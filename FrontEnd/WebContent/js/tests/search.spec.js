@@ -11,6 +11,7 @@ describe('PetFinderController', function(){
 	}));
 	it('should set the scope value of pets', function(){
 		expect(scope.pets).toBe(searchService);
+		expect(args).toBeUndefined();
 	});
 	describe('search() method', function(){
 		it('should format the search data', function(){
@@ -18,7 +19,7 @@ describe('PetFinderController', function(){
 		});
 		it('should call getpet from the search service', function(){			
 			scope.search();
-			expect(scope.pets.getPet).toHaveBeenCalledWith(jasmine.any(Object));			
+			expect(scope.pets.getPet).toHaveBeenCalledWith(jasmine.any(Object));
 		});
 	});
 });
