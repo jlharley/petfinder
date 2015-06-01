@@ -4,7 +4,6 @@ angular.module('petFinderApp').service("searchService", function SearchService($
 	searchService.results = [];
 	searchService.numResults = 30;
 
-    var API_URL = "http://localhost:8080/backend/getPet";
 	var START = 0;
     var NUM_RESULTS = 10;
         
@@ -16,30 +15,27 @@ angular.module('petFinderApp').service("searchService", function SearchService($
     searchService.petBreed = '';*/
     
     searchService.search = function() {
-    	searchService.formatSearchData();
-    	searchService.getPet();
-    	console.log("Setting numResults");
+    	searchService.args = searchService.formatSearchData();
+    	searchService.getPet(searchService.args);
     };
 	
 	searchService.formatSearchData = function(){
-		searchService.args = {};
-    	searchService.args.animal = "dog";
-    	searchService.args.breed = "";
-    	searchService.args.size = "M";
-    	searchService.args.sex = "M";
-    	searchService.args.location = "48108";
-    	searchService.args.age = "Baby";
-    	searchService.args.offset = START;
-    	searchService.args.count = NUM_RESULTS;
-    	searchService.args.output = "full";
-    	console.log("ARGS: " + searchService.args);
+		var formatted = {};
+		formatted.animal = "dog";
+		formatted.breed = "";
+		formatted.size = "M";
+		formatted.sex = "M";
+		formatted.location = "48108";
+		formatted.age = "Baby";
+		formatted.offset = START;
+		formatted.count = NUM_RESULTS;
+		formatted.output = "full";
+    	return formatted;
     };
     
-    searchService.getPet = function() {
-    	searchService.results = [];
-    	
-    	$http.post(API_URL, searchService.args).success( function(data) {
-    		searchService.results = $.merge(data, searchService.results);
+    searchService.getPet = function(args) {
+    	$http.post("http://localhost:8080/backend/getPet", args).success( function(data) {
+    		searchService.results = data;
         	$location.path('/search/results');
     	});
     };
