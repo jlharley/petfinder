@@ -3,7 +3,7 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
     var args;
     
     $scope.search = function(){
-    	args = $scope.pets.formatSearchData();
+    	args = $scope.pets.formatSearchData();  //This will be removed
     	$scope.pets.getPet(args);
     };
 });
