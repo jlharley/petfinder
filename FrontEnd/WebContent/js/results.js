@@ -1,5 +1,6 @@
 angular.module('petFinderApp').controller('resultController', function($scope, searchService) {
 	$scope.pets = searchService;
+	$scope.args;
 	
 	$scope.availableLimits = [1, 5, 10];
 	$scope.limit = 1;
@@ -14,9 +15,14 @@ angular.module('petFinderApp').controller('resultController', function($scope, s
 	$scope.$watchCollection('[pets.results.length]', function() {
     	console.log("Change in length:\n\tlength = " + $scope.pets.results.length + "\n\tnumResults = " + $scope.pets.numResults);
 		if ($scope.pets.results.length == 0 && $scope.pets.numResults > 0){
-			$scope.pets.search();
+			$scope.update();
 		}
 	});
+	
+	$scope.update = function(){
+		$scope.args = $scope.pets.formatSearchData();  //This will be removed
+    	$scope.pets.getPet($scope.args);
+	}
 	
 	$scope.dislikePet = function(pet){
 		var index = $scope.pets.results.indexOf(pet);
