@@ -30,7 +30,7 @@ angular.module('petFinderApp').service("searchService", function SearchService($
 		formatted.offset = START;
 		formatted.count = NUM_RESULTS;
 		formatted.output = "full";
-    	return formatted;
+    	return JSON.parse(JSON.stringify(formatted));
     };
     
     searchService.getPet = function(args) {
