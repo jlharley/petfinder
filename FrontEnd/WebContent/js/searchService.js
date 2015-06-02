@@ -1,6 +1,5 @@
 angular.module('petFinderApp').service("searchService", function SearchService($http, $location) {
 	var searchService = this;
-	searchService.results = [];
 	searchService.numResults = 30;	//FOR TESTING
 
 	var START = 0;
@@ -21,9 +20,6 @@ angular.module('petFinderApp').service("searchService", function SearchService($
     };
     
     searchService.getPet = function(args) {
-    	$http.post("http://localhost:8080/backend/getPet", args).success( function(data) {
-    		console.log("getPet");
-    		searchService.results = data;
-    	});
+    	return $http.post("http://localhost:8080/backend/getPet", args);
     };
 });

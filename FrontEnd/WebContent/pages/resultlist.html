@@ -1,12 +1,12 @@
 <!-- Example row of columns -->
-<h4>{{pets.results.length}} total</h4>
+<h4>{{results.length}} total</h4>
 <div class="row" id="result">
 	<p>Results Per Page: <span ng-repeat="limit in availableLimits"
         ng-class="{'active': isActiveLimit(limit)}"
         ng-click="setLimit(limit)">
       {{ limit }}
       </span></p>
-	<div class="col-lg-12 tile" ng-repeat="pet in pets.results | limitTo: limit">
+	<div class="col-lg-12 tile" ng-repeat="pet in results | limitTo: limit">
 		<h2>{{pet.name}}</h2>
 		<p>Age:  {{pet.age}}</p>
 		<p>Color:  {{pet.color}}</p>
