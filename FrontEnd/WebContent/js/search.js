@@ -1,7 +1,7 @@
 angular.module('petFinderApp').controller('PetFinderController', function($scope, searchService) {
     $scope.args = {};
     $scope.results = [];
-    var response;
+    this.response;
     $scope.hello = false;
     
     $scope.search = function(){
@@ -38,13 +38,13 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
 	$scope.dislikePet = function(pet){
 		var index = $scope.results.indexOf(pet);
 		$scope.results.splice(index, 1);
-		searchService.numResults --;
+		//searchService.numResults --;
 	};
 	
 	$scope.likePet = function(pet){
 		var index = $scope.results.indexOf(pet);
 		$scope.results.splice(index, 1);
-		searchService.numResults --;
+		//searchService.numResults --;
 	};
     
 });

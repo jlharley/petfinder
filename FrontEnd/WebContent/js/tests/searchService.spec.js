@@ -1,42 +1,38 @@
 beforeEach(module('petFinderApp'));
 describe('Search Service', function(){
-	var searchService, httpBackend, location, $rootScope;
-	beforeEach(inject(function(_searchService_, $httpBackend, $location, _$rootScope_){
+	var searchService, httpBackend, $rootScope;
+	beforeEach(inject(function(_searchService_, _$httpBackend_, _$rootScope_){
 		searchService = _searchService_;
-		httpBackend = $httpBackend;
-		location = $location;
+		$httpBackend = _$httpBackend_;
 		$rootScope = _$rootScope_;
-		spyOn($location, 'path').and.returnValue('/Fake location');
 	}));
 	describe('formatSearchData function', function(){
 		it('should create formatted variable', function(){
-			var formatted;
+			var args = {};
 			expect().toBeUndefined();
-			formatted = searchService.formatSearchData();
-			expect(formatted).toEqual(jasmine.any(Object));
+			args = searchService.formatSearchData(args);
+			expect(args).toEqual(jasmine.any(Object));
 		});
 	});
 	describe('getPet function', function(){
 		beforeEach(function(){
-			httpBackend.expectPOST('http://localhost:8080/backend/getPet').respond(function(method,url,data){
-				return [200, {}, {}];
+			$httpBackend.expectPOST('http://localhost:8080/backend/getPet').respond(function(method,url,data){
+				return [200, {"test":"test"}, {}];
 			});
 		});
 		it('take in an object', function(){
-			httpBackend.flush();
+			
 		});
 		it('make an http post to backend', function(){
-			
+			var test;
+			searchService.getPet({}).success(function(data){
+				test = data;
+			});
+			$httpBackend.flush();	
+			expect(test).toEqual({"test":"test"});
 		});
-		it('set results equal to the returned data', function(){
+		it('return a promise from the response', function(){
 			
-		});
-		it('call location.path to change url', function(){
-			var args = {};
-			searchService.getPet(args);
-			httpBackend.flush();
-			console.log("test")
-			//expect(location.path).toHaveBeenCalledWith('/search/results');
 		});
 	});
 });
