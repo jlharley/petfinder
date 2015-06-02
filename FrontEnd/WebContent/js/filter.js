@@ -4,7 +4,8 @@ angular.module('petFinderApp')
         restrict: 'EA', //E = element, A = attribute, C = class, M = comment         
         scope: {
             buttonLabel: "@",
-            search: "="
+            search: "=",
+            args: "="
         },
         templateUrl: 'pages/filter.html'
 //        controller: function()...

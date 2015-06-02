@@ -8,12 +8,12 @@ angular.module('petFinderApp').service("searchService", function SearchService($
 	
 	searchService.formatSearchData = function(args){
 		var formatted = {};
-		formatted.animal = args.animal;
-		formatted.breed = args.breed;
-		formatted.size = args.size;
-		formatted.sex = args.sex;
+		formatted.animal = args.animal || null;
+		formatted.breed = args.breed || null;
+		formatted.size = args.size || null;
+		formatted.sex = args.sex || null;
 		formatted.location = args.location;
-		formatted.age = args.age;
+		formatted.age = args.age || null;
 		formatted.offset = START;
 		formatted.count = NUM_RESULTS;
 		formatted.output = "full";
