@@ -1,4 +1,4 @@
-angular.module('petFinderApp').controller('contactController', function($scope, $http, searchService, $location) {
+angular.module('petFinderApp').controller('contactController', function($scope, $http, $location) {
 	$scope.success = false;
 	$scope.error = false;
 	
@@ -9,7 +9,7 @@ angular.module('petFinderApp').controller('contactController', function($scope, 
 		+ "&body=" + $scope.user.body;
 		
 		try {
-			window.location.href = link;
+			$location.absUrl(link);
 			$scope.success = true;
 		} catch (e) {
 			console.log(e);
