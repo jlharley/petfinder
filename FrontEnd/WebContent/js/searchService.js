@@ -1,27 +1,19 @@
 angular.module('petFinderApp').service("searchService", function SearchService($http, $location) {
 	var searchService = this;
-	searchService.args;
 	searchService.results = [];
-	searchService.numResults = 30;
+	searchService.numResults = 30;	//FOR TESTING
 
 	var START = 0;
     var NUM_RESULTS = 10;
-        
-    /*searchService.petName = '';
-    searchService.petAgeMin = '';
-    searchService.petAgeMax = '';
-    searchService.petColor = '';
-    searchService.petSpecies = '';
-    searchService.petBreed = '';*/
 	
-	searchService.formatSearchData = function(){
+	searchService.formatSearchData = function(args){
 		var formatted = {};
-		formatted.animal = "dog";
-		formatted.breed = "";
-		formatted.size = "M";
-		formatted.sex = "M";
-		formatted.location = "48108";
-		formatted.age = "Baby";
+		formatted.animal = args.animal;
+		formatted.breed = args.breed;
+		formatted.size = args.size;
+		formatted.sex = args.sex;
+		formatted.location = args.location;
+		formatted.age = args.age;
 		formatted.offset = START;
 		formatted.count = NUM_RESULTS;
 		formatted.output = "full";

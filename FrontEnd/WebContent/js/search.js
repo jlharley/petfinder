@@ -1,9 +1,18 @@
 angular.module('petFinderApp').controller('PetFinderController', function($scope, searchService) {
     $scope.pets = searchService;
-    $scope.args;
+    $scope.args = {};
+    
+    //TEMP
+    $scope.args.animal = null;
+    $scope.args.breed = null;
+    $scope.args.size = null;
+    $scope.args.sex = null;
+    $scope.args.location = "48108";
+    $scope.args.age = null;
+    
     
     $scope.search = function(){
-    	$scope.args = $scope.pets.formatSearchData();  //This will be removed
+    	$scope.args = $scope.pets.formatSearchData($scope.args);  //This will be removed
     	$scope.pets.getPet($scope.args);
     };
     
