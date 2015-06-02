@@ -5,7 +5,7 @@
 	<div class="jumbotron" ng-if="results.length === 0">
 		<h1>Search For a Pet Your Own Way</h1>
 		<p class="lead">Click below to see random pets, or search for what you want.</p>
-		<p><a class="btn btn-lg btn-success" href="#search/results" role="button" id="btnjson" ng-click="getPet()">Random</a></p>
+		<p><a class="btn btn-lg btn-success" role="button" id="btnjson" ng-click="getRandomPet()">Random</a></p>
 	</div>
 	<pet-result ng-if="results.length > 0" />
 </div>

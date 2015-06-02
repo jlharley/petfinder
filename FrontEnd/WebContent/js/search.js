@@ -46,7 +46,5 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
 		$scope.results.splice(index, 1);
 		searchService.numResults --;
 	};
-	
-    //$scope.getRandomPet();
     
 });
