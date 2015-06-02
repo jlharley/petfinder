@@ -22,13 +22,6 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
 		return amount === $scope.limit;
 	};
 	
-	/*$scope.$watchCollection('[pets.results.length]', function() {
-    	console.log("Change in length:\n\tlength = " + $scope.pets.results.length + "\n\tnumResults = " + $scope.pets.numResults);
-		if ($scope.pets.results.length == 0 && $scope.pets.numResults > 0){
-			$scope.update();
-		}
-	});*/
-	
 	$scope.update = function(){
 		$scope.args = $scope.pets.formatSearchData();  //This will be removed
     	$scope.pets.getPet($scope.args);
