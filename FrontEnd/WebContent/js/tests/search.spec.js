@@ -4,24 +4,44 @@ describe('PetFinderController', function(){
 	beforeEach(inject(function($controller, $rootScope, _searchService_, $q){
 		scope = $rootScope.$new();
 		searchService = _searchService_;
+		q = $q;
 		PetFinderController = $controller('PetFinderController', {
 			$scope: scope
 		});
 		spyOn(searchService, 'formatSearchData').and.returnValue('{test:test}');
-		/*spyOn(searchService, 'getPet').and.callFake(function() {
-			return $http.post("test", args);
-	    });*/
+		spyOn(searchService, 'getPet').and.returnValue({success:function(){}});
 		
 	}));
-	xdescribe('search method', function(){
+	describe('search method', function(){
+		beforeEach(function(){
+		});
 		it('should format the search data', function(){
 			scope.search();
 			expect(searchService.formatSearchData).toHaveBeenCalled();
-			expect(scope.args).toEqual('{test:test}');
 		});
 		it('should call getPet from the search service', function(){
 			scope.search();
-			expect(searchService.getPet).toHaveBeenCalledWith('{test:test}');
+			expect(searchService.getPet).toHaveBeenCalled();
+		});
+	});
+	describe('getRandomPet method', function(){
+		beforeEach(function(){
+		});
+		it('should call getPet from the search service', function(){
+			scope.getRandomPet();
+			expect(searchService.getPet).toHaveBeenCalled();
+		});
+	});
+	describe('update method', function(){
+		beforeEach(function(){
+		});
+		it('should format the search data', function(){
+			scope.update();
+			expect(searchService.formatSearchData).toHaveBeenCalled();
+		});
+		it('should call getPet from the search service', function(){
+			scope.update();
+			expect(searchService.getPet).toHaveBeenCalled();
 		});
 	});
 	describe('dislikePet method', function(){

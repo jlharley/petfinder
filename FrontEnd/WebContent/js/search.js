@@ -1,8 +1,7 @@
 angular.module('petFinderApp').controller('PetFinderController', function($scope, searchService) {
     $scope.args = {};
     $scope.results = [];
-    this.response;
-    $scope.hello = false;
+    var response;
     
     $scope.search = function(){
         $scope.args.location = "48108";
