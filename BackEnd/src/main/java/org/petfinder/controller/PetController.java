@@ -5,7 +5,9 @@ import java.util.Locale;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 import org.petfinder.entity.PetfinderPetRecord;
 import org.petfinder.entity.PetfinderPetRecordList;
 import org.petfinder.model.PetSearchParameters;
@@ -27,7 +29,8 @@ import com.systemsinmotion.petrescue.web.PetFinderConsumer;
 public class PetController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PetController.class);
-	
+	private static SessionFactory sessionFactory;
+	private static ServiceRegistry serviceRegistry;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public @ResponseBody String home(Locale locale, Model model) {
@@ -78,11 +81,29 @@ public class PetController {
 	}
 
 	
+	
+
+
+	public static SessionFactory createSessionFactory() {
+	    Configuration configuration = new Configuration();
+	    configuration.configure("hibernate.cfg.xml");
+	    System.out.println("Hibernate Annotation Configuration loaded");
+	    
+	    serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
+	    //serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+	    System.out.println("Hibernate Java Config serviceRegistry created");
+	    
+	    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+	    return sessionFactory;
+	}
+	
+	
+	
 	@RequestMapping(value = "/initDB")
 	public @ResponseBody void initDB() {
 		
 		// Contains all the data regarding the hibernate config file
-		SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+		SessionFactory sessionFactory = createSessionFactory();
 				
 		// Opens a database connection
 		Session session = sessionFactory.openSession();

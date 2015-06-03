@@ -1,21 +1,21 @@
 package org.petfinder.model;
 
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Table;
-import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author wkoppelberger
  *
  */
 
-@DynamicUpdate
-@Table(appliesTo = "user_accounts")
+@Entity
+@Table(name = "user_accounts")
 public class UserAccount {
-	
+
 	@Id
 	private String emailAddress;
-	
+
 	private String firstName;
 	private String lastName;
 	private String address;
