@@ -3,9 +3,13 @@ package org.petfinder.controller;
 import java.util.List;
 import java.util.Locale;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.petfinder.entity.PetfinderPetRecord;
 import org.petfinder.entity.PetfinderPetRecordList;
 import org.petfinder.model.PetSearchParameters;
+import org.petfinder.model.UserAccount;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -56,7 +60,7 @@ public class PetController {
 		return "{name:fido}";
 	}
 	
-	@RequestMapping(value="/getPet", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value="/getPet", method = RequestMethod.GET, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public @ResponseBody List<PetfinderPetRecord> searchPet(@RequestBody PetSearchParameters params) {
 		
 		System.out.println("SEARCH PARAMETERS: " + params.toString());
@@ -73,4 +77,26 @@ public class PetController {
 		return petList;
 	}
 
+	
+	@RequestMapping(value = "/initDB")
+	public @ResponseBody void initDB() {
+		
+		// Contains all the data regarding the hibernate config file
+		SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+				
+		// Opens a database connection
+		Session session = sessionFactory.openSession();
+		
+		UserAccount bob = new UserAccount();
+		bob.setEmailAddress("bob@yahoo.com");
+		
+		// Database usage 
+		session.beginTransaction();
+		session.save(bob);
+		session.getTransaction().commit();
+		session.close();
+		
+		// Closes a database connection
+		sessionFactory.close();
+	}
 }

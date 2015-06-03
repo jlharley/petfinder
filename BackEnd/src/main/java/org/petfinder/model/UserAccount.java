@@ -1,14 +1,23 @@
 package org.petfinder.model;
 
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Table;
+import org.springframework.data.annotation.Id;
+
 /**
  * @author wkoppelberger
  *
  */
-public class UserAccount {
 
+@DynamicUpdate
+@Table(appliesTo = "user_accounts")
+public class UserAccount {
+	
+	@Id
+	private String emailAddress;
+	
 	private String firstName;
 	private String lastName;
-	private String emailAddress;
 	private String address;
 	private String zipcode;
 
