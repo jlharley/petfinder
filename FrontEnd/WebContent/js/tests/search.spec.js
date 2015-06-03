@@ -9,7 +9,9 @@ describe('PetFinderController', function(){
 			$scope: scope
 		});
 		spyOn(searchService, 'formatSearchData').and.returnValue('{test:test}');
-		spyOn(searchService, 'getPet').and.returnValue({success:function(){}});
+		spyOn(searchService, 'getPet').and.returnValue({success:function(callback){
+			callback();
+		}});
 		
 	}));
 	describe('search method', function(){
