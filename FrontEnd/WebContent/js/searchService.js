@@ -20,6 +20,7 @@ angular.module('petFinderApp').service("searchService", function SearchService($
     };
     
     searchService.getPet = function(args) {
+    	START = START + NUM_RESULTS;
     	return $http.post("http://localhost:8080/backend/getPet", args);
     };
 });
