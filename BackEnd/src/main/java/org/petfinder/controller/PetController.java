@@ -1,53 +1,76 @@
 package org.petfinder.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-import org.petfinder.model.Pet;
+import org.petfinder.entity.PetfinderPetRecord;
+import org.petfinder.entity.PetfinderPetRecordList;
+import org.petfinder.model.PetSearchParameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.systemsinmotion.petrescue.web.PetFinderConsumer;
 
 
-
-@RestController
+@Controller
 public class PetController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PetController.class);
 	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public @ResponseBody String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		PetFinderConsumer pfc = new PetFinderConsumer();
+		pfc.init();	
 		
-		String formattedDate = dateFormat.format(date);
+		try {
+			PetfinderPetRecordList findPet = pfc.findPet(null, null, null, null, "48317", null, null, 1, null, null);
+			return "" + findPet.getPet().toString();
+		} catch(NullPointerException e) {
+			logger.error("Search results were incorrect!");
+		}
 		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
+		return "# of Dogs: " + pfc.shelterDogs().size();
 	}
 	
-	@RequestMapping(value="/getPet", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
-	public Pet getPet() {
+	@RequestMapping(value="/getPetTEST", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+	
+	public @ResponseBody String getPet() {
 		logger.info("getPet");
 		
-		Pet dog1 = new Pet();
+		PetFinderConsumer pfc = new PetFinderConsumer();
+		pfc.init();
+
+		PetfinderPetRecord ppr = new PetfinderPetRecord();
+		ppr.setName("fido");
 		
-		// Make API call
-		//PetFinderConsumer pfc = new PetFinderConsumer();
-		//PetFinderPetRecord pfr = pfc.findPet(animal, breed, size, sex, location, age, offset, count, output, format);
-		
-		return dog1;
+		return "{name:fido}";
 	}
 	
+	@RequestMapping(value="/getPet", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	public @ResponseBody List<PetfinderPetRecord> searchPet(@RequestBody PetSearchParameters params) {
+		
+		System.out.println("SEARCH PARAMETERS: " + params.toString());
+		
+		PetFinderConsumer pfc = new PetFinderConsumer();
+		pfc.init();	
+		
+		PetfinderPetRecordList findPet = pfc.findPet(params.getAnimal(), params.getBreed(), params.getSize(), 
+				params.getSex(), params.getLocation(), params.getAge(), params.getOffset(), params.getCount(), 
+				params.getOutput(), params.getFormat());
+		
+		List<PetfinderPetRecord> petList = findPet.getPet();
+		
+		return petList;
+	}
+
 }

@@ -1,11 +1,66 @@
 body {
   padding-top: 20px;
+  overflow-x:hidden;
 }
 
-.col-lg-4 {
+.mainView {
+	margin-top: 20px;
+}
+
+.dislikeButton {
+  	background-color: #E00000;
+  	width: 50%;
+}
+
+.dislikeButton:hover {
+  	background-color: #A00000;
+  	width: 50%;
+}
+
+.likeButton {
+  	width: 50%;
+}
+
+.active {
+	color:#286090;
+	font-weight:bold;
+}
+
+.masthead {
+	text-align: justify;
+}
+
+.masthead > h3{
+	display: inline-block;
+}
+
+.masthead:after{
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    font-size:0;
+    line-height:0;
+}
+
+.userIndicator {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.userPicture {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	box-shadow: 0px 0px 5px #888888;
+}
+
+.tile {
 	border-radius: 5px;
 	box-shadow: 0px 0px 5px #888888;
 }
+
+
 
 .footer {
   padding-top: 40px;
@@ -19,12 +74,7 @@ body {
 }
 
 .buffer {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-top: 40px;
-  border-top: 1px solid #eee;
-  background-color: white;
-  width: 100vw;
+  height: 120px;
 }
 
 /* Main marketing message and sign up button */
