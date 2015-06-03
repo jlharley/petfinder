@@ -2,7 +2,6 @@ package org.petfinder.controller;
 
 import java.util.List;
 import java.util.Locale;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.systemsinmotion.petrescue.web.PetFinderConsumer;
 
 
@@ -49,21 +47,7 @@ public class PetController {
 		return "# of Dogs: " + pfc.shelterDogs().size();
 	}
 	
-	@RequestMapping(value="/getPetTEST", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
-	
-	public @ResponseBody String getPet() {
-		logger.info("getPet");
-		
-		PetFinderConsumer pfc = new PetFinderConsumer();
-		pfc.init();
-
-		PetfinderPetRecord ppr = new PetfinderPetRecord();
-		ppr.setName("fido");
-		
-		return "{name:fido}";
-	}
-	
-	@RequestMapping(value="/getPet", method = RequestMethod.GET, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value="/getPet", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public @ResponseBody List<PetfinderPetRecord> searchPet(@RequestBody PetSearchParameters params) {
 		
 		System.out.println("SEARCH PARAMETERS: " + params.toString());
@@ -71,6 +55,7 @@ public class PetController {
 		PetFinderConsumer pfc = new PetFinderConsumer();
 		pfc.init();	
 		
+		try {
 		PetfinderPetRecordList findPet = pfc.findPet(params.getAnimal(), params.getBreed(), params.getSize(), 
 				params.getSex(), params.getLocation(), params.getAge(), params.getOffset(), params.getCount(), 
 				params.getOutput(), params.getFormat());
@@ -78,11 +63,13 @@ public class PetController {
 		List<PetfinderPetRecord> petList = findPet.getPet();
 		
 		return petList;
+		}
+		catch(NullPointerException e) {
+			logger.error("Search results were incorrect!");
+		}
+		
+		return null;
 	}
-
-	
-	
-
 
 	public static SessionFactory createSessionFactory() {
 	    Configuration configuration = new Configuration();
@@ -96,8 +83,6 @@ public class PetController {
 	    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 	    return sessionFactory;
 	}
-	
-	
 	
 	@RequestMapping(value = "/initDB")
 	public @ResponseBody void initDB() {
@@ -119,5 +104,13 @@ public class PetController {
 		
 		// Closes a database connection
 		sessionFactory.close();
+	}
+	
+	@RequestMapping(value = "/addUserDB", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	public @ResponseBody String addUserDB(@RequestBody UserAccount account) {
+		
+		
+		
+		return "Failed to add user to the Database!";
 	}
 }
