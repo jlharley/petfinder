@@ -12,7 +12,7 @@
 				<p><a class="btn btn-primary dislikeButton" ng-click="dislikePet(pet)" role="button" id="dislikePet"> &laquo; Dislike</a><a class="btn btn-primary likeButton" ng-click="likePet(pet)" role="button" id="likePet">Like &raquo;</a></p>
 			</div>
 			<div class="col-lg-3">
-				<img class="img-responsive" ng-src="{{pet.media.photos.photo[0].value || 'http://cliparts.co/cliparts/Bia/ELb/BiaELbMAT.jpg'}}" style="width:100%;" />
+				<img class="img-responsive" ng-src="{{pet.media.photos.photo[0].value.split('?')[0] || 'images/cat.jpg'}}" style="width:100%;" />
 			</div>
 			<div class="col-lg-3">
 				<h2>{{pet.name}}</h2>
