@@ -1,46 +1,26 @@
 angular.module('petFinderApp').service("searchService", function SearchService($http, $location) {
 	var searchService = this;
-	searchService.args;
-	searchService.results = [];
-	searchService.numResults = 30;
+	searchService.numResults = 30;	//FOR TESTING
 
-    var API_URL = "http://localhost:8080/backend/getPet";
 	var START = 0;
     var NUM_RESULTS = 10;
-        
-    /*searchService.petName = '';
-    searchService.petAgeMin = '';
-    searchService.petAgeMax = '';
-    searchService.petColor = '';
-    searchService.petSpecies = '';
-    searchService.petBreed = '';*/
-    
-    searchService.search = function() {
-    	searchService.formatSearchData();
-    	searchService.getPet();
-    	console.log("Setting numResults");
-    };
 	
-	searchService.formatSearchData = function(){
-		searchService.args = {};
-    	searchService.args.animal = "dog";
-    	searchService.args.breed = "";
-    	searchService.args.size = "M";
-    	searchService.args.sex = "M";
-    	searchService.args.location = "48108";
-    	searchService.args.age = "Baby";
-    	searchService.args.offset = START;
-    	searchService.args.count = NUM_RESULTS;
-    	searchService.args.output = "full";
-    	console.log("ARGS: " + searchService.args);
+	searchService.formatSearchData = function(args){
+		var formatted = {};
+		formatted.animal = args.animal || null;
+		formatted.breed = args.breed || null;
+		formatted.size = args.size || null;
+		formatted.sex = args.sex || null;
+		formatted.location = args.location;
+		formatted.age = args.age || null;
+		formatted.offset = START;
+		formatted.count = NUM_RESULTS;
+		formatted.output = "full";
+    	return formatted;
     };
     
-    searchService.getPet = function() {
-    	searchService.results = [];
-    	
-    	$http.post(API_URL, searchService.args).success( function(data) {
-    		searchService.results = $.merge(data, searchService.results);
-        	$location.path('/search/results');
-    	});
+    searchService.getPet = function(args) {
+    	START = START + NUM_RESULTS;
+    	return $http.post("http://localhost:8080/backend/getPet", args);
     };
 });
