@@ -57,8 +57,11 @@ body {
 }
 
 .tile {
+	padding: 5px;
 	border-radius: 5px;
 	box-shadow: 0px 0px 5px #888888;
+	background: rgba(54, 25, 25, .5);
+	color: #00003D;
 }
 
 
