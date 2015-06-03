@@ -7,11 +7,17 @@
       {{ limit }}
       </span></p>
 	<div class="col-lg-12 tile" ng-repeat="pet in results | limitTo: limit">
-		<h2>{{pet.name}}</h2>
-		<p>Age:  {{pet.age}}</p>
-		<p>Color:  {{pet.color}}</p>
-		<p>Species:  {{pet.species}}</p>
-		<p>Breed:  {{pet.breed}}</p>
+		<img ng-src="{{pet.media.photos.photo[0].value}}" height="200px" style="float:right;" />
+		<div>
+			<h2>{{pet.name}}</h2>
+			<h3>{{pet.animal}}</h3>
+			<h3>Breed:  {{pet.breeds.breed}}</h3>
+			<h3>Sex:  {{pet.sex}}</h3>
+			<h3>Size:  {{pet.size}}</h3>
+			<h3>Age:  {{pet.age}}</h3>
+			<p>{{pet.option}}</p>
+		</div>
+		<p>{{pet.description}}</p>
 		<p><a class="btn btn-primary dislikeButton" ng-click="dislikePet(pet)" role="button" id="dislikePet"> &laquo; Dislike</a><a class="btn btn-primary likeButton" ng-click="likePet(pet)" role="button" id="likePet">Like &raquo;</a></p>
 	</div>
 </div>
