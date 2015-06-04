@@ -1,4 +1,4 @@
-angular.module('petFinderApp').controller('mainController', function($scope, user) {
+angular.module('petFinderApp').controller('mainController', function($scope, user, searchService) {
 	$scope.user = user;
 	$scope.userInfo;
 	$scope.signedIn = true;
@@ -6,8 +6,9 @@ angular.module('petFinderApp').controller('mainController', function($scope, use
 	$scope.$on('event:google-plus-signin-success', function (event,authResult) {
 			console.log('Signed in!');
 			console.log(authResult);
-			getUserInfo();
-			signedIn = true;
+			console.log(JSON.stringify(getUserInfo()));
+			signedIn = true;				
+			
 	  });
 	  $scope.$on('event:google-plus-signin-failure', function (event,authResult) {
 		  console.log('Not signed into Google Plus.');
@@ -23,7 +24,8 @@ angular.module('petFinderApp').controller('mainController', function($scope, use
 	    $scope.$apply(function() {
 	        console.log("user:" + JSON.stringify(userInfo));
 	        $scope.userInfo = userInfo;
-	        $scope.$apply;
+			var args = {"email":$scope.userInfo.emails[0].value,"firstName":$scope.userInfo.name.familyName,"lastName":$scope.userInfo.name.givenName};
+			searchService.sendUser(args);
 	    });
 	};
 	  function getUserInfo() {
