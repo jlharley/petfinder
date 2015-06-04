@@ -3,7 +3,7 @@
 		return;
 	}
 
-	angular.module('petFinderApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngMockE2E']);
+	angular.module('petFinderApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngMockE2E', 'directive.g+signin']);
 
 	angular.module('petFinderApp').run(function($httpBackend) {
 	    // define responses for requests here as usual

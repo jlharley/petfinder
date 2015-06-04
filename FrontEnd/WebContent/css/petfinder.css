@@ -8,18 +8,39 @@ body {
 	margin-top: 20px;
 }
 
+.noselect {
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.likeDislike {
+	position: absolute;
+	width: 100%;
+  	font-size: 100px;
+}
+
+
 .dislikeButton {
-  	background-color: #E00000;
-  	width: 50%;
+  	color: #E00000;
+  	opacity: 0.2;
 }
 
 .dislikeButton:hover {
-  	background-color: #A00000;
-  	width: 50%;
+  	opacity: 0.9;
 }
 
 .likeButton {
-  	width: 50%;
+	color: #00ff00;
+  	opacity: 0.2;
+  	float: right;
+}
+
+.likeButton:hover {
+  	opacity: 0.9;
 }
 
 .active {
@@ -57,11 +78,17 @@ body {
 }
 
 .tile {
+	margin: 5px;
+	padding: 5px;
 	border-radius: 5px;
 	box-shadow: 0px 0px 5px #888888;
+	background: rgba(54, 25, 25, .2);
+	color: #00003D;
 }
 
-
+.clickable:hover {
+	cursor: pointer;
+}
 
 .footer {
   padding-top: 40px;
