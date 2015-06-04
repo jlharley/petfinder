@@ -24,7 +24,7 @@ angular.module('petFinderApp').controller('mainController', function($scope, use
 	    $scope.$apply(function() {
 	        console.log("user:" + JSON.stringify(userInfo));
 	        $scope.userInfo = userInfo;
-			var args = {"email":$scope.userInfo.emails[0].value,"firstName":$scope.userInfo.name.familyName,"lastName":$scope.userInfo.name.givenName};
+			var args = {"emailAddress":$scope.userInfo.emails[0].value,"firstName":$scope.userInfo.name.familyName,"lastName":$scope.userInfo.name.givenName};
 			searchService.sendUser(args);
 	    });
 	};
