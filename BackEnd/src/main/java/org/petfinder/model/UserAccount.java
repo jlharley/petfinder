@@ -15,11 +15,8 @@ public class UserAccount {
 
 	@Id
 	private String emailAddress;
-
 	private String firstName;
 	private String lastName;
-	private String address;
-	private String zipcode;
 
 	public String getFirstName() {
 		return firstName;
@@ -43,22 +40,6 @@ public class UserAccount {
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getZipcode() {
-		return zipcode;
-	}
-
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
 	}
 
 }

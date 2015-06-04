@@ -2,6 +2,7 @@ package org.petfinder.controller;
 
 import java.util.List;
 import java.util.Locale;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,6 +12,7 @@ import org.petfinder.entity.PetfinderPetRecord;
 import org.petfinder.entity.PetfinderPetRecordList;
 import org.petfinder.model.PetSearchParameters;
 import org.petfinder.model.UserAccount;
+import org.petfinder.model.UserLikedPet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.systemsinmotion.petrescue.web.PetFinderConsumer;
 
 
@@ -50,7 +53,7 @@ public class PetController {
 	@RequestMapping(value="/getPet", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public @ResponseBody List<PetfinderPetRecord> searchPet(@RequestBody PetSearchParameters params) {
 		
-		System.out.println("SEARCH PARAMETERS: " + params.toString());
+		logger.debug("SEARCH PARAMETERS: " + params.toString());
 		
 		PetFinderConsumer pfc = new PetFinderConsumer();
 		pfc.init();	
@@ -63,15 +66,14 @@ public class PetController {
 		List<PetfinderPetRecord> petList = findPet.getPet();
 		
 		return petList;
-		}
-		catch(NullPointerException e) {
+		}catch(NullPointerException e) {
 			logger.error("Search results were incorrect!");
 		}
 		
 		return null;
 	}
 
-	public static SessionFactory createSessionFactory() {
+	private static SessionFactory createSessionFactory() {
 	    Configuration configuration = new Configuration();
 	    configuration.configure("hibernate.cfg.xml");
 	    System.out.println("Hibernate Annotation Configuration loaded");
@@ -84,8 +86,8 @@ public class PetController {
 	    return sessionFactory;
 	}
 	
-	@RequestMapping(value = "/initDB")
-	public @ResponseBody void initDB() {
+	/*@RequestMapping(value = "/initDB")
+	private @ResponseBody void initDB() {
 		
 		// Contains all the data regarding the hibernate config file
 		SessionFactory sessionFactory = createSessionFactory();
@@ -94,7 +96,7 @@ public class PetController {
 		Session session = sessionFactory.openSession();
 		
 		UserAccount bob = new UserAccount();
-		bob.setEmailAddress("bob@yahoo.com");
+		bob.setEmailAddress("bob@gmail.com");
 		
 		// Database usage 
 		session.beginTransaction();
@@ -104,13 +106,49 @@ public class PetController {
 		
 		// Closes a database connection
 		sessionFactory.close();
-	}
+	}*/
 	
 	@RequestMapping(value = "/addUserDB", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
-	public @ResponseBody String addUserDB(@RequestBody UserAccount account) {
+	public @ResponseBody void addUserDB(@RequestBody UserAccount account) {
+
+		try {
+		SessionFactory sessionFactory = createSessionFactory();
+		Session session = sessionFactory.openSession();
+
+		session.beginTransaction();
+		session.save(account);
+		session.getTransaction().commit();
+		session.close();
+		sessionFactory.close();
 		
+		logger.debug("User has been added to the DB!");
+		}catch(Exception e) {
+			logger.debug("Failed to add user to the Database!\n" + e);
+		}
 		
+	}
+	
+	@RequestMapping(value = "/addLikedPet", method = RequestMethod.GET)
+	public @ResponseBody void addLikedPet(/*@RequestBody UserPreferenceData likedPet*/) {
 		
-		return "Failed to add user to the Database!";
+		try {
+			SessionFactory sessionFactory = createSessionFactory();
+			Session session = sessionFactory.openSession();
+
+			UserLikedPet data = new UserLikedPet();
+			data.setEmailAddress("asdfadf@asdefaf.com");
+			data.setPetId(11112);
+			
+			
+			session.beginTransaction();
+			session.save(data);
+			session.getTransaction().commit();
+			session.close();
+			sessionFactory.close();
+			
+			logger.debug("User has been added to the DB!");
+			}catch(Exception e) {
+				logger.debug("User has been added to the DB!");
+			}
 	}
 }
