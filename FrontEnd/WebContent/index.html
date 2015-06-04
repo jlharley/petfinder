@@ -36,7 +36,7 @@
 		<script src="js/dependencies/angular-mocks.js"></script>
 		<script src="js/dependencies/ui-bootstrap-tpls-0.12.1.min.js" data-require="ui-bootstrap@*" data-semver="0.12.1"></script>
 		<script src="js/dependencies/bootstrap.js"></script>
-		<script src="js/dependencies/google-plus-signin.js.js"></script>
+		<script src="js/dependencies/google-plus-signin.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/tests/backendMock.js"></script>
 	<script src="js/routes.js"></script>
@@ -59,6 +59,8 @@
 	  <source src="images/vid.mp4" type="video/mp4">
 	</video>
     <div class="container">
+    <google-plus-signin clientid="693695826411-3ngckna6tuub8q39r8at0274aiidpg4n.apps.googleusercontent.com"></google-plus-signin>
+    <button ng-click="signOut()">signout</button>
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
@@ -66,8 +68,8 @@
         <!-- User Indicator -->
         <div class="userIndicator">
 	    <h3 class="text-muted">
-	    <img class="userPicture" src="http://www.adtechnology.co.uk/images/UGM-default-user.png">
-	    {{user.getFullName()}}
+	    <img class="userPicture" ng-src="{{userInfo.image.url || 'http://www.adtechnology.co.uk/images/UGM-default-user.png'}}">
+	    {{userInfo.displayName}}
 	    </h3>
 	    </div>
       </div>
