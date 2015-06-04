@@ -17,18 +17,30 @@ body {
     user-select: none;
 }
 
+.likeDislike {
+	position: absolute;
+	width: 100%;
+  	font-size: 100px;
+}
+
+
 .dislikeButton {
-  	background-color: #E00000;
-  	width: 50%;
+  	color: #E00000;
+  	opacity: 0.5;
 }
 
 .dislikeButton:hover {
-  	background-color: #A00000;
-  	width: 50%;
+  	opacity: 0.9;
 }
 
 .likeButton {
-  	width: 50%;
+	color: #00ff00;
+  	opacity: 0.5;
+  	float: right;
+}
+
+.likeButton:hover {
+  	opacity: 0.9;
 }
 
 .active {

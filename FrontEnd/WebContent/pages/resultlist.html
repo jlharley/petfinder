@@ -10,8 +10,8 @@
       </div>
 	<div class="col-lg-12 tile" ng-repeat="pet in results | limitTo: limit">
 		<div >			
-			<div>
-				<p><a class="btn btn-primary dislikeButton noselect" ng-click="dislikePet(pet)" role="button" id="dislikePet"> &laquo; Dislike</a><a class="btn btn-primary likeButton noselect" ng-click="likePet(pet)" role="button" id="likePet">Like &raquo;</a></p>
+			<div class="likeDislike" style="z-index:9999;">
+				<span class="dislikeButton noselect" ng-click="dislikePet(pet)" role="button" id="dislikePet">&#128078;</span><span class="likeButton noselect" ng-click="likePet(pet)" role="button" id="likePet">&#128077;</span>
 			</div>
 			<div class="col-lg-3">
 				<img class="img-responsive tile" ng-src="{{pet.media.photos.photo[0].value.split('?')[0] || 'images/cat.jpg'}}" style="width:100%;" />
