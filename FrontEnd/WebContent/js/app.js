@@ -1,1 +1,1 @@
-angular.module('petFinderApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
+angular.module('petFinderApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'directive.g+signin']);
