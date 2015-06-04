@@ -26,7 +26,7 @@ body {
 
 .dislikeButton {
   	color: #E00000;
-  	opacity: 0.5;
+  	opacity: 0.2;
 }
 
 .dislikeButton:hover {
@@ -35,7 +35,7 @@ body {
 
 .likeButton {
 	color: #00ff00;
-  	opacity: 0.5;
+  	opacity: 0.2;
   	float: right;
 }
 

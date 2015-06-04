@@ -10,13 +10,16 @@
       </div>
 	<div class="col-lg-12 tile" ng-repeat="pet in results | limitTo: limit">
 		<div >			
-			<div class="likeDislike" style="z-index:9999;">
+			<!-- div class="likeDislike" style="z-index:9999;">
 				<span class="dislikeButton noselect" ng-click="dislikePet(pet)" role="button" id="dislikePet">&#128078;</span><span class="likeButton noselect" ng-click="likePet(pet)" role="button" id="likePet">&#128077;</span>
-			</div>
+			</div-->
 			<div class="col-lg-3">
 				<img class="img-responsive tile" ng-src="{{pet.media.photos.photo[0].value.split('?')[0] || 'images/cat.jpg'}}" style="width:100%;" />
 			</div>
 			<div class="col-lg-3">
+				<h1 class="likeDislike">
+					<span class="dislikeButton noselect" ng-click="dislikePet(pet)" role="button" id="dislikePet">&#128078;</span><span class="likeButton noselect" ng-click="likePet(pet)" role="button" id="likePet">&#128077;</span>
+				</h1>
 				<h2>{{pet.name}}</h2>
 				<h3>{{pet.animal}}</h3>
 				<h3>Breed:  <span ng-repeat="b in pet.breeds.breed">{{b}}, </span></h3>
