@@ -1,11 +1,13 @@
 angular.module('petFinderApp').controller('mainController', function($scope, user) {
 	$scope.user = user;
 	$scope.userInfo;
+	$scope.signedIn = true;
 	
 	$scope.$on('event:google-plus-signin-success', function (event,authResult) {
 			console.log('Signed in!');
 			console.log(authResult);
-			$scope.getUserInfo();
+			getUserInfo();
+			signedIn = true;
 	  });
 	  $scope.$on('event:google-plus-signin-failure', function (event,authResult) {
 		  console.log('Not signed into Google Plus.');
@@ -24,7 +26,7 @@ angular.module('petFinderApp').controller('mainController', function($scope, use
 	        $scope.$apply;
 	    });
 	};
-	  $scope.getUserInfo = function() {
+	  function getUserInfo() {
 		    gapi.client.request(
 		        {
 		            'path':'/plus/v1/people/me',
