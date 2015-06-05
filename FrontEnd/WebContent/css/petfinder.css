@@ -17,6 +17,10 @@ body {
     user-select: none;
 }
 
+.likedPetButton {
+	color: pink;
+}
+
 .likeDislike {
 	position: absolute;
 	width: 100%;
@@ -113,6 +117,32 @@ body {
 .jumbotron .btn {
   padding: 14px 24px;
   font-size: 21px;
+}
+
+/* Customize the form input to be fill the entire space of the */
+.form {
+}
+
+.form > input {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+	.form {
+		display: table;
+	}
+	.form > input {
+	  display: table-cell;
+	  width: 16.5%;
+	}
+}
+@media screen and (max-width: 768px) {
+  /* Remove the padding we set earlier */
+  .form > input {
+  	width: 100%;
+  }
 }
 
 /* Customize the nav-justified links to be fill the entire space of the .navbar */
