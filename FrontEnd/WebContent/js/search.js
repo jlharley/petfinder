@@ -55,9 +55,9 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
 		//searchService.numResults --;
 		var args = {"emailAddress":user.emailAddress,"petId":pet.id};
     	console.log("ADDING LIKED PET: " + JSON.stringify(args));
-    	response = searchService.getLikedPets(args);
+    	response = searchService.addLikedPet(args);
     	response.success( function(data) {
-    		$scope.results = data;
+    		console.log("Successfully added pet!");
     	});
 	};
     
