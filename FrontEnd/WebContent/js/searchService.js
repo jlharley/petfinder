@@ -29,7 +29,7 @@ angular.module('petFinderApp').service("searchService", function SearchService($
     };
     
     searchService.addLikedPet = function(args) {
-    	return $http.post("http://localhost:8080/backend/getLikedPets", args);
+    	return $http.post("http://localhost:8080/backend/addLikedPet", args);
     };
     
     searchService.sendUser = function(args) {
