@@ -14,7 +14,6 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
     
     $scope.getLikedPets = function(){
 		var args = {"emailAddress":user.emailAddress,"firstName":user.firstName,"lastName":user.lastName};
-		console.log(JSON.stringify(user));
     	response = searchService.getLikedPets(args);
     	response.success( function(data) {
     		$scope.results = data;
@@ -54,6 +53,12 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
 		var index = $scope.results.indexOf(pet);
 		$scope.results.splice(index, 1);
 		//searchService.numResults --;
+		var args = {"emailAddress":user.emailAddress,"petId":pet.id};
+    	console.log("ADDING LIKED PET: " + JSON.stringify(args));
+    	response = searchService.getLikedPets(args);
+    	response.success( function(data) {
+    		$scope.results = data;
+    	});
 	};
     
 });
