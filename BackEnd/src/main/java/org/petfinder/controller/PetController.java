@@ -152,8 +152,8 @@ public class PetController {
 			}
 	}
 	
-	@RequestMapping(value = "/getLikedPets", method = RequestMethod.GET/*, consumes = {MediaType.APPLICATION_JSON_VALUE}*/)
-	public @ResponseBody List<PetfinderPetRecord> getLikedPets(/*@RequestBody UserLikedPet user*/) {
+	@RequestMapping(value = "/getLikedPets", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	public @ResponseBody List<PetfinderPetRecord> getLikedPets(@RequestBody UserAccount user) {
 		logger.debug("Retrieving Liked Pets from the DB");
 		
 		PetfinderPetRecordList likedPetRecords = new PetfinderPetRecordList();
@@ -165,7 +165,7 @@ public class PetController {
 			Session session = sessionFactory.openSession();
 
 			// Queries the DB for the user's liked Pets
-			SQLQuery query = session.createSQLQuery("select petId from user_liked where emailAddress='bartman@gmail.com'");
+			SQLQuery query = session.createSQLQuery("select petId from user_liked where emailAddress='" + user.getEmailAddress() + "'");
 			System.out.println("Query: " + query.list().toString());
 
 			// Retrieves the PetfinderPetRecords from the PetFinder API of the PetIDs retrieved from the DB
