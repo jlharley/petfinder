@@ -17,6 +17,10 @@ body {
     user-select: none;
 }
 
+.likedPetButton {
+	color: pink;
+}
+
 .likeDislike {
 	position: absolute;
 	width: 100%;

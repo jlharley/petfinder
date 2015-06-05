@@ -5,7 +5,8 @@ angular.module('petFinderApp')
         scope: {
             buttonLabel: "@",
             search: "=",
-            args: "="
+            args: "=",
+            getLikedPets: "="
         },
         templateUrl: 'pages/filter.html'
 //        controller: function()...

@@ -1,7 +1,6 @@
 angular.module('petFinderApp').controller('mainController', function($scope, user, searchService) {
 	$scope.user = user;
-	$scope.userInfo;
-	$scope.signedIn = true;
+	$scope.signedIn = false;
 	
 	$scope.$on('event:google-plus-signin-success', function (event,authResult) {
 			console.log('Signed in!');
@@ -20,11 +19,14 @@ angular.module('petFinderApp').controller('mainController', function($scope, use
 	  }
 	 
 	// When callback is received, process user info.
-	$scope.userInfoCallback = function(userInfo) {
+	$scope.userCallback = function(userInfo) {
 	    $scope.$apply(function() {
-	        console.log("user:" + JSON.stringify(userInfo));
-	        $scope.userInfo = userInfo;
-			var args = {"emailAddress":$scope.userInfo.emails[0].value,"firstName":$scope.userInfo.name.familyName,"lastName":$scope.userInfo.name.givenName};
+	        $scope.user.emailAddress = userInfo.emails[0].value;
+	        $scope.user.firstName = userInfo.name.givenName;
+	        $scope.user.lastName = userInfo.name.familyName;
+	        $scope.user.displayName = userInfo.displayName;
+	        $scope.user.image = userInfo.image.url;
+			var args = {"emailAddress":$scope.user.emailAddress,"firstName":$scope.user.firstName,"lastName":$scope.user.lastName};
 			searchService.sendUser(args);
 	    });
 	};
@@ -33,7 +35,7 @@ angular.module('petFinderApp').controller('mainController', function($scope, use
 		        {
 		            'path':'/plus/v1/people/me',
 		            'method':'GET',
-		            'callback': $scope.userInfoCallback
+		            'callback': $scope.userCallback
 		        }
 		    );
 		};

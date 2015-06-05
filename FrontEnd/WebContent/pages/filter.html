@@ -1,6 +1,6 @@
-
-<form class="col-lg-12 tile form" ng-submit="search()">
-	<h2>Filters</h2>
+<div class="tile">
+<h2>Filters</h2>
+<form class="col-lg-12 form" ng-submit="search()">
 	<input type="text" ng-model="args.animal"  placeholder="animal">
 	<input type="text" ng-model="args.breed"  placeholder="breed">
 	<input type="text" ng-model="args.size"  placeholder="size">
@@ -8,5 +8,6 @@
 	<input type="text" ng-model="args.age"  placeholder="age">
 	<!-- p class="col-lg-2">Age: {{age}}<input type="range" ng-model="args.age"  size="30" min="0" max="3" step="1" value=0></p-->
 	<input class="btn btn-primary" type="submit" value="{{buttonLabel}}">
-	
 </form>
+<a class="likedPetButton" ng-click="getLikedPets()">&#10084;</a>
+</div>

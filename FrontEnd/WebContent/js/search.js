@@ -1,4 +1,4 @@
-angular.module('petFinderApp').controller('PetFinderController', function($scope, searchService) {
+angular.module('petFinderApp').controller('PetFinderController', function($scope, searchService, user) {
     $scope.args = {};
     $scope.results = [];
     var response;
@@ -11,6 +11,16 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
     		$scope.results = data;
     	});
     };
+    
+    $scope.getLikedPets = function(){
+		var args = {"emailAddress":user.emailAddress,"firstName":user.firstName,"lastName":user.lastName};
+		console.log(JSON.stringify(user));
+    	response = searchService.getLikedPets(args);
+    	response.success( function(data) {
+    		$scope.results = data;
+    	});
+    };
+    
     
     $scope.getRandomPet = function(){
     	response = searchService.getPet({animal:null, breed:null, size:null, sex:null, location:"48108", age:null, offset:null, count:10, output:"full"});
