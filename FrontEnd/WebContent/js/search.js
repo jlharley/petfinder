@@ -47,6 +47,12 @@ angular.module('petFinderApp').controller('PetFinderController', function($scope
 		var index = $scope.results.indexOf(pet);
 		$scope.results.splice(index, 1);
 		//searchService.numResults --;
+		var args = {"emailAddress":user.emailAddress,"petId":pet.id};
+    	console.log("ADDING DISLIKED PET: " + JSON.stringify(args));
+    	response = searchService.addDislikedPet(args);
+    	response.success( function(data) {
+    		console.log("Successfully disliked pet!");
+    	});
 	};
 	
 	$scope.likePet = function(pet){

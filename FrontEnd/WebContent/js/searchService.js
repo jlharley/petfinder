@@ -32,6 +32,10 @@ angular.module('petFinderApp').service("searchService", function SearchService($
     	return $http.post("http://localhost:8080/backend/addLikedPet", args);
     };
     
+    searchService.addDislikedPet = function(args) {
+    	return $http.post("http://localhost:8080/backend/addDislikedPet", args);
+    };
+    
     searchService.sendUser = function(args) {
     	return $http.post("http://localhost:8080/backend/addUserDB", args);
     };
