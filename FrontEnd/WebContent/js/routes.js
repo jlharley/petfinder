@@ -29,5 +29,11 @@ angular.module('petFinderApp').config(function($routeProvider) {
 		.when('/contact', {
 		    templateUrl : 'pages/contact.html',
 		    controller  : 'contactController'
+		})
+	
+		// route for the contact page
+		.when('/login', {
+		    templateUrl : 'pages/login.html'/*,
+		    controller  : 'loign'*/
 		});
 });
